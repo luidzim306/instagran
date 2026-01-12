@@ -34,10 +34,10 @@ export function HeroSection() {
 
   useEffect(() => {
     setCurrentDay(getDayOfWeek())
-    // const savedSearch = localStorage.getItem("stalkea_previous_search")
-    // if (savedSearch) {
-    //   setPreviousSearch(JSON.parse(savedSearch))
-    // }
+    const savedSearch = localStorage.getItem("instacheck_previous_search")
+    if (savedSearch) {
+      setPreviousSearch(JSON.parse(savedSearch))
+    }
   }, [])
 
   const handleSpyClick = async () => {
@@ -50,12 +50,12 @@ export function HeroSection() {
       return
     }
 
-    // const savedSearch = localStorage.getItem("stalkea_previous_search")
-    // if (savedSearch) {
-    //   setPreviousSearch(JSON.parse(savedSearch))
-    //   setShowLimitReached(true)
-    //   return
-    // }
+    const savedSearch = localStorage.getItem("instacheck_previous_search")
+    if (savedSearch) {
+      setPreviousSearch(JSON.parse(savedSearch))
+      setShowLimitReached(true)
+      return
+    }
 
     setShowLoading(true)
 
@@ -94,14 +94,6 @@ export function HeroSection() {
 
       setUserProfileData(profileDataResult)
       setProfileData(postsDataResult)
-
-      // const profile = profileDataResult?.result || profileDataResult
-      // const searchData: PreviousSearch = {
-      //   username: username,
-      //   profilePicUrl: profile?.profile_pic_url_hd || profile?.profile_pic_url || "/placeholder.svg",
-      //   fullName: profile?.full_name || username,
-      // }
-      // localStorage.setItem("stalkea_previous_search", JSON.stringify(searchData))
     } catch (error) {
       console.error("[v0] API Error:", error)
     }
@@ -119,6 +111,14 @@ export function HeroSection() {
   }
 
   const handleConfirm = () => {
+    const profile = userProfileData?.result || userProfileData
+    const searchData: PreviousSearch = {
+      username: username,
+      profilePicUrl: profile?.profile_pic_url_hd || profile?.profile_pic_url || "/placeholder.svg",
+      fullName: profile?.full_name || username,
+    }
+    localStorage.setItem("instacheck_previous_search", JSON.stringify(searchData))
+
     setShowConfirmation(false)
     setShowFeed(true)
   }
@@ -174,7 +174,7 @@ export function HeroSection() {
             <Button
               onClick={() => {
                 // Redirecionar para checkout
-                window.location.href = "/checkout"
+                window.location.href = "https://pay.mycheckoutt.com/01997889-d90f-7176-b1ad-330b2aadd114?ref="
               }}
               className="w-full h-14 bg-gradient-to-r from-purple-600 to-purple-500 hover:from-purple-700 hover:to-purple-600 text-white text-lg font-semibold rounded-2xl mb-4 flex items-center justify-center gap-2"
             >

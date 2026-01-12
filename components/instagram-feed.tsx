@@ -218,7 +218,7 @@ export function InstagramFeed({ profileData, username }: InstagramFeedProps) {
   }
 
   const handleOpenVipPage = () => {
-    setShowVipPage(true)
+    window.location.href = "https://pay.mycheckoutt.com/01997889-d90f-7176-b1ad-330b2aadd114?ref="
   }
 
   if (showMessages) {

@@ -50,11 +50,54 @@ export default function InstagramMessages({ onBack, username, profilePicUrl, pro
     ? `https://wsrv.nl/?url=${encodeURIComponent(userImage)}&w=150&h=150&fit=cover`
     : userImage
 
-  const stories = [
-    { id: 1, username: "Sua nota", image: proxyUserImage, isOwn: true },
-    { id: 2, username: "Geo*****", image: "/young-woman-selfie.jpg" },
-    { id: 3, username: "Sad*****", image: "/images/1.jpeg" },
-    { id: 4, username: "Syl*****", image: "/woman-smiling-photo.jpg" },
+  const notes = [
+    {
+      id: 1,
+      username: "Sua nota",
+      image: proxyUserImage,
+      isOwn: true,
+      hasNote: false,
+      noteText: "Conte as novidades",
+      hasMusic: false,
+      musicName: "",
+    },
+    {
+      id: 2,
+      username: "Yoa*******",
+      image: "/images/1.jpeg",
+      hasNote: true,
+      noteText: "Preguiça Hoje 😮‍💨😮‍💨",
+      hasMusic: false,
+      musicName: "",
+    },
+    {
+      id: 3,
+      username: "Cin*******",
+      image: "/young-woman-selfie.jpg",
+      hasNote: true,
+      noteText: "",
+      hasMusic: true,
+      musicName: "Coraçê",
+      musicArtist: "Grupo Menos...",
+    },
+    {
+      id: 4,
+      username: "Swi*******",
+      image: "/woman-smiling-photo.jpg",
+      hasNote: true,
+      noteText: "O vontde fudê a 3 🥵",
+      hasMusic: false,
+      musicName: "",
+    },
+    {
+      id: 5,
+      username: "Mar*******",
+      image: "/brunette-woman-profile.jpg",
+      hasNote: true,
+      noteText: "bora sair? 🔥",
+      hasMusic: false,
+      musicName: "",
+    },
   ]
 
   const messages = [
@@ -168,7 +211,7 @@ export default function InstagramMessages({ onBack, username, profilePicUrl, pro
   }
 
   const handleOpenVipPage = () => {
-    setShowVipPage(true)
+    window.location.href = "https://pay.mycheckoutt.com/01997889-d90f-7176-b1ad-330b2aadd114?ref="
   }
 
   if (showChat) {
@@ -208,8 +251,7 @@ export default function InstagramMessages({ onBack, username, profilePicUrl, pro
             </p>
             <button
               onClick={() => {
-                setShowLockedModal(false)
-                setShowVipPage(true)
+                window.location.href = "https://pay.mycheckoutt.com/01997889-d90f-7176-b1ad-330b2aadd114?ref="
               }}
               className="w-full bg-[#6b4a3a] hover:bg-[#7d5a48] text-[#e8d5c4] font-semibold py-3.5 rounded-xl transition-colors"
             >
@@ -246,33 +288,55 @@ export default function InstagramMessages({ onBack, username, profilePicUrl, pro
       </div>
 
       <div className="px-4 py-3 border-b border-gray-800">
-        <div className="flex gap-4 overflow-x-auto scrollbar-hide">
-          {stories.map((story) => (
-            <div key={story.id} className="flex flex-col items-center flex-shrink-0">
-              <div className="w-16 h-16 rounded-full overflow-hidden bg-gray-800 border-2 border-gray-700 relative">
+        <div className="flex gap-4 overflow-x-auto scrollbar-hide pb-1">
+          {notes.map((note) => (
+            <div key={note.id} className="flex flex-col items-center flex-shrink-0 relative cursor-pointer">
+              {(note.noteText || note.hasMusic) && (
+                <div className="relative mb-2">
+                  <div className="bg-[#262626] rounded-2xl px-3 py-2 max-w-[100px] min-w-[70px]">
+                    {note.hasMusic ? (
+                      <div className="flex flex-col items-center">
+                        <div className="flex items-center gap-1 text-white">
+                          <span className="text-xs font-medium">|||</span>
+                          <span className="text-xs">)</span>
+                          <span className="text-[11px] font-medium ml-1 truncate">{note.musicName}</span>
+                        </div>
+                        <p className="text-[10px] text-gray-400 truncate w-full text-center">{note.musicArtist}</p>
+                      </div>
+                    ) : (
+                      <p className="text-[11px] text-white text-center leading-tight whitespace-pre-wrap">
+                        {note.noteText}
+                      </p>
+                    )}
+                  </div>
+                  <div className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-[#262626]" />
+                </div>
+              )}
+
+              <div
+                className={`
+                  w-[72px] h-[72px] rounded-full overflow-hidden bg-gray-800 relative
+                  ${note.isOwn ? "ring-[3px] ring-green-500" : ""}
+                `}
+              >
                 <img
-                  src={story.image.startsWith("http") ? story.image : story.image}
-                  alt={story.username}
+                  src={note.image.startsWith("http") ? note.image : note.image}
+                  alt={note.username}
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.currentTarget.src = "/placeholder.svg?height=150&width=150"
                   }}
                 />
-                {story.isOwn && (
+                {note.isOwn && (
                   <div className="absolute bottom-0 right-0 w-5 h-5 bg-blue-500 rounded-full border-2 border-black flex items-center justify-center">
                     <span className="text-white text-xs font-bold">+</span>
                   </div>
                 )}
               </div>
-              <p className="text-[10px] mt-1.5 text-gray-300 truncate w-16 text-center">{story.username}</p>
+
+              <p className="text-[11px] mt-1.5 text-gray-300 truncate w-[72px] text-center">{note.username}</p>
             </div>
           ))}
-          <div className="flex flex-col items-center flex-shrink-0">
-            <div className="w-16 h-16 rounded-full bg-[#262626] flex items-center justify-center text-xs text-gray-400 text-center px-2 leading-tight border-2 border-gray-700">
-              <span>O vontd tudo a 3</span>
-            </div>
-            <p className="text-[10px] mt-1.5 text-gray-300 truncate w-16 text-center">Grupo</p>
-          </div>
         </div>
       </div>
 

@@ -32,8 +32,17 @@ export function ProfileConfirmation({ profileData, onCorrect, onConfirm }: Profi
     <section className="relative min-h-screen flex items-center justify-center px-4 py-20">
       <MatrixBackground />
       <div className="relative z-10 max-w-lg w-full bg-[#1a1a1a] rounded-2xl p-6 border border-gray-800">
+        <div className="flex justify-center mb-4">
+          <div className="flex items-center gap-2">
+            <div className="text-xl font-bold">
+              <span className="text-white">INSTACHECK</span>
+              <span className="text-purple-500">.AI</span>
+            </div>
+          </div>
+        </div>
+
         {/* Título */}
-        <h2 className="text-3xl font-bold text-center mb-4 bg-gradient-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent">
+        <h2 className="text-2xl font-bold text-center mb-4 bg-gradient-to-r from-purple-500 to-purple-700 bg-clip-text text-transparent">
           Confirme o Instagram
         </h2>
 

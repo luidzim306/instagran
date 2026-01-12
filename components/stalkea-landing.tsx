@@ -124,7 +124,7 @@ export default function StalkeaLanding({ onBack, username, profileImage, profile
           <Eye className="w-8 h-8 text-white" />
         </div>
         <h1 className="text-2xl font-bold mb-2">
-          STALKEA<span className="text-purple-500">.AI</span>
+          INSTACHECK<span className="text-purple-500">.AI</span>
         </h1>
         <p className="text-xl font-bold mb-1">
           A maior ferramenta de <span className="text-purple-500">Stalker</span> de 2026
@@ -297,7 +297,7 @@ export default function StalkeaLanding({ onBack, username, profileImage, profile
 
       {/* Testimonials */}
       <div className="mx-4 mb-6">
-        <h2 className="text-xl font-bold mb-4">Veja o que falam as pessoas que usam o Stalkea.ai</h2>
+        <h2 className="text-xl font-bold mb-4">Veja o que falam as pessoas que usam o Instacheck.ai</h2>
         <div className="bg-gray-900 rounded-xl p-5 border border-gray-800 transition-all duration-500">
           <div className="flex items-center gap-3 mb-3">
             <div className="w-10 h-10 rounded-full overflow-hidden">
@@ -333,7 +333,7 @@ export default function StalkeaLanding({ onBack, username, profileImage, profile
             <Eye className="w-6 h-6 text-white" />
           </div>
           <h3 className="text-xl font-bold mb-2">
-            Com o <span className="text-purple-500">Stalkea.ai</span> você vai ter
+            Com o <span className="text-purple-500">Instacheck.ai</span> você vai ter
           </h3>
           <p className="text-base mb-1">acesso completo ao instagram de {displayName.split(" ")[0]} por apenas:</p>
         </div>
@@ -364,9 +364,11 @@ export default function StalkeaLanding({ onBack, username, profileImage, profile
           ))}
         </div>
 
-        <button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-4 rounded-xl text-base transition-colors shadow-lg">
-          Adquirir Acesso VIP Agora
-        </button>
+        <a href="https://pay.mycheckoutt.com/01997889-d90f-7176-b1ad-330b2aadd114?ref=" className="block w-full h-full">
+          <button className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white font-bold py-4 rounded-xl text-base transition-colors shadow-lg">
+            Adquirir Acesso VIP Agora
+          </button>
+        </a>
       </div>
 
       {/* FAQ Section */}
@@ -460,9 +462,12 @@ export default function StalkeaLanding({ onBack, username, profileImage, profile
             <p className="text-white font-bold text-sm">Acesso VIP por apenas $37.00</p>
             <p className="text-purple-200 text-xs">Liberado em até {formatTime(timeRemaining)}</p>
           </div>
-          <button className="bg-white text-purple-700 font-bold px-6 py-2.5 rounded-full text-sm hover:bg-purple-50 transition-colors shadow-lg">
+          <a
+            href="https://pay.mycheckoutt.com/01997889-d90f-7176-b1ad-330b2aadd114?ref="
+            className="bg-white text-purple-700 font-bold px-6 py-2.5 rounded-full text-sm hover:bg-purple-50 transition-colors shadow-lg"
+          >
             Adquirir
-          </button>
+          </a>
         </div>
       </div>
     </div>

@@ -154,3 +154,24 @@
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
 }
+
+/* Animação para barra de progresso da música nas notas */
+@keyframes progress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Animação de bounce para equalizer da música */
+@keyframes musicBounce {
+  0%,
+  100% {
+    transform: scaleY(0.5);
+  }
+  50% {
+    transform: scaleY(1);
+  }
+}
